@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/29207980/bridge-serial-ports-over-network
+
+https://unix.stackexchange.com/questions/127784/comunicate-with-remote-serial-over-tcp-ip-as-dev-ttyx-device
+
+https://unix.stackexchange.com/questions/201757/how-can-i-set-up-a-usb-proxy-for-dev-ttyusb0-over-the-network
