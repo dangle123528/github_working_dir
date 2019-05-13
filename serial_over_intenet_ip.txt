@@ -3,3 +3,24 @@ https://stackoverflow.com/questions/29207980/bridge-serial-ports-over-network
 https://unix.stackexchange.com/questions/127784/comunicate-with-remote-serial-over-tcp-ip-as-dev-ttyx-device
 
 https://unix.stackexchange.com/questions/201757/how-can-i-set-up-a-usb-proxy-for-dev-ttyusb0-over-the-network
+
+https://superuser.com/questions/812196/tcp-ip-to-serial-serial-server
+It isn't entirely clear what you want to do but it may be possible that socat will enable you to access a serial port on one computer from a TCP connection from another computer.
+
+See EXAMPLE FOR REMOTE TTY (TTY OVER TCP) USING SOCAT
+
+You have a host with some serial device like a modem or a bluetooth interface (modem server) You want to make use of this device on a different host. (client)
+
+1) on the modem server start a process that accepts network connections and links them with the serial device /dev/tty0:
+
+$ socat tcp-l:54321,reuseaddr,fork file:/dev/tty0,nonblock,waitlock=/var/run/tty0.lock
+2) on the client start a process that creates a pseudo tty and links it with a tcp connection to the modem server:
+
+$ socat pty,link=$HOME/dev/vmodem0,waitslave tcp:modem-server:54321
+socat supports forking and has other features that may be useful in achieving multiple concurrent connections.
+
+The above example assumes you have some client application which works with a serial connection, the client instance of socat provides the local end of a relay for a local virtual serial port to a remote real serial port.
+
+If you have an application that doesn't expect a local serial port but which communicates over TCP direcly, you wouldn't need the local instance of socat.
+
+For multiple serial ports you could start multiple instances of socat, each of which can handle multiple consecutive connections.
