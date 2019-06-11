@@ -1,0 +1,44 @@
+server/Windown
+
+https://buildmedia.readthedocs.org/media/pdf/pyserial/stable/pyserial.pdf
+
+CMD
+) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\LE NGOC THANH DANG>cd .././
+
+C:\Users>cd ..
+
+C:\>cd Python27
+
+C:\Python27>python.exe F:\working_directory\working_dir\pyserial\examples\tcp_serial_redirect.py COM1 115200
+--- TCP/IP to Serial redirect on COM1  115200,8,N,1 ---
+--- type Ctrl-C / BREAK to quit
+Waiting for connection on 7777...
+Connected by ('192.168.56.103', 42576)
+Disconnected
+Waiting for connection on 7777...
+Connected by ('192.168.56.103', 42578)
+Disconnected
+Waiting for connection on 7777...
+
+
+
+
+Check for port opening
+Microsoft Windows [Version 10.0.18362.145]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\LE NGOC THANH DANG>netstat -ano
+
+Active Connections
+
+  Proto  Local Address          Foreign Address.
+
+
+
+Linux/destination
+
+https://techtinkering.com/2013/04/02/connecting-to-a-remote-serial-port-over-tcpip/
+https://unix.stackexchange.com/questions/127784/comunicate-with-remote-serial-over-tcp-ip-as-dev-ttyx-device
+dangle@dangle-Vir:~$ socat pty,link=/home/dangle/temp,waitslave tcp:192.168.56.1:7777
